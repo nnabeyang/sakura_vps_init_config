@@ -28,6 +28,7 @@ iptables -A INPUT -p icmp -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 10022 -j ACCEPT
+iptables -t filter -I INPUT  -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -P INPUT DROP
 iptables -P OUTPUT ACCEPT
